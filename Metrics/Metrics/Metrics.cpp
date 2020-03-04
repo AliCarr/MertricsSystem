@@ -6,18 +6,15 @@ struct information
 	int j;
 };
 
-
 Metrics::Metrics()
 {
 	if (!std::ifstream("MyFile.csv"))
 		myFile = new std::ofstream("MyFile.csv");
 
 	else
-	{
 		myFile = new std::ofstream();
-		
-	}
 
+	fileName = "MyFile.csv";
 }
 
 Metrics::Metrics(std::string nameOfFile)
@@ -28,8 +25,10 @@ Metrics::Metrics(std::string nameOfFile)
 	else
 	{
 		myFile = new std::ofstream();
-		myFile->open(nameOfFile, std::ofstream::app);
+		//myFile->open(nameOfFile, std::ofstream::app);
 	}
+
+	fileName = nameOfFile;
 }
 
 Metrics::~Metrics()
@@ -41,12 +40,8 @@ Metrics::~Metrics()
 	}
 }
 
-//template<typename Data>
-//void Metrics::Write(Data input)
-//{
-//	myFile->open("MyFile.csv", std::ofstream::out | std::ofstream::app);
-//
-//	*myFile << input << ",";
-//
-//	myFile->close();
-//}
+void Metrics::Clear()
+{
+	myFile->open(fileName, std::ofstream::out | std::ofstream::trunc);
+	myFile->close();
+}

@@ -16,11 +16,11 @@ struct information
 
 int main()
 {
-	information test;
-	test.i = 8;
-	test.j = 9;
+
 	Metrics* myMets;
 	myMets = new Metrics(); 
+	myMets->Clear();
 
-	myMets->Write(test);
+	
+	//myMets->Write(test);
 }
