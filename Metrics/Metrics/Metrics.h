@@ -9,7 +9,18 @@ public:
 	Metrics(std::string nameOfFile);
 	~Metrics();
 
+	//template<typename Data>
+	//void Write(Data);
 
+	template<typename Data>
+	void Write(Data input)
+	{
+		myFile->open("MyFile.csv", std::ofstream::out | std::ofstream::app);
+
+		*myFile << input << ",";
+
+		myFile->close();
+	}
 private:
 	std::ofstream *myFile;
 	std::string fileName;
